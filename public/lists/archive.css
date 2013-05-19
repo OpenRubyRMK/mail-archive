@@ -28,6 +28,10 @@ div#banner {
     background-color: black;
 }
 
+div#main {
+    padding: 4px;
+}
+
 div#header p {
     font-size: 14pt;
     color: white;
@@ -35,7 +39,7 @@ div#header p {
 }
 
 div#mailinglists {
-    padding-top: 64px; /* Height of banner plus distance*/
+    padding-top: 60px; /* Height of banner plus distance */
 }
 
 div#banner a {
