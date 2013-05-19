@@ -26,7 +26,8 @@ class MlArchive < Sinatra::Base
   set :ml_archiver, Archiver.new(settings.ml_archive_dir,
                                  header: "<p>OpenRubyRMK Mailing list archives</p>",
                                  searchtarget: "../../search",
-                                 stylefile: "../../../archive.css")
+                                 stylefile: "../../../archive.css",
+                                 archiveadmin: "quintus@quintilianus.eu")
 
   configure :development do
     Thread.abort_on_exception = true
@@ -50,11 +51,28 @@ class MlArchive < Sinatra::Base
 
   get "/lists/:ml" do
     @mlname = params[:ml]
+
+    @index_files = []
+    Pathname.new(settings.ml_archive_dir).join(@mlname).each_child do |yeardir|
+      yeardir.each_child do |monthdir|
+        @index_files << ["#{yeardir.basename}-#{monthdir.basename}", "/lists/#@mlname/#{yeardir.basename}/#{monthdir.basename}/index.html"]
+      end
+    end
+    @index_files.sort_by!{|ary| ary.first}
+
     erb :ml
+  end
+
+  get "/lists/:ml/" do
+    redirect "/lists/#{params[:ml]}"
   end
 
   get "/lists/:ml/search" do
     "This is the search for the #{params[:ml]} mailinglist."
+  end
+
+  get "/lists/:ml/search/" do
+    redirect "/lists/#{params[:ml]}/search"
   end
 
 end

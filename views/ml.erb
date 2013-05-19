@@ -4,9 +4,7 @@
   periods have been archived:</p>
 
 <ul>
-  <% Pathname.new(MlArchive.settings.ml_archive_dir).join(@mlname).each_child do |yeardir| %>
-    <% yeardir.each_child do |monthdir| %>
-      <li><a href="<%= "/lists/#@mlname/#{yeardir.basename}/#{monthdir.basename}/index.html" %>"><%= "#{yeardir.basename}-#{monthdir.basename}" %></a></li>
-    <% end %>
+  <% @index_files.each do |name, target| %>
+    <li><a href="<%= target %>"><%= name %></a></li>
   <% end %>
 </ul>
