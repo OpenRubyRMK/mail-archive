@@ -1,0 +1,3 @@
+[submodule "lib/mlmmj-rbarchive"]
+	path = lib/mlmmj-rbarchive
+	url = git://github.com/Quintus/mlmmj-rbarchive.git
