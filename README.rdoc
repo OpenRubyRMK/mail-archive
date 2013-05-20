@@ -1,0 +1,44 @@
+= OpenRubyRMK Mailinglist Archive Website
+
+This is the sourcecode for http://lists.openrubyrmk.org, the
+OpenRubyRMK mailinglist archive. It’s a simple
+Sinatra[http://www.sinatrarb.com] website using
+{mlmmj-rbarchive}[https://github.com/Quintus/mlmmj-rbarchive] for
+archiving the mails from the mlmmj[http://mlmmj.org]-managed
+mailinglists.
+
+== Run it locally
+
+  $ git clone git://github.com/OpenRubyRMK/mail-archive.git
+  $ cd mail-archive
+  $ git submodule init
+  $ git submodule update
+  $ bundle install
+  $ bundle exec rackup -p 3000
+
+Browse to http://localhost:3000 and enjoy. You’ll notice that by
+default, the website processes the `test-mls` directory inside the
+project root. Therefore you can just put your test mails there if you
+aren’t content with the mails already there. Note that in `production`
+environment, it will instead process `/var/spool/mlmmj`.
+
+== License
+
+See AUTHORS for a list of people that have contributed to the website,
+and COPYING for the full license.
+
+The OpenRubyRMK mailinglist archive website.
+Copyright (C) 2013  The OpenRubyRMK Team
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
