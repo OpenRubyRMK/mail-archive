@@ -91,6 +91,18 @@ class MlArchive < Sinatra::Base
   end
 
   post "/lists/:ml/search" do
+    @mlname = params[:ml]
+    @query = params[:query]
+
+    if @query.empty?
+      @results = []
+    else
+      @results = settings.ml_archiver.search(@mlname, @query).map do |path|
+        ["/lists/#@mlname/#{path}", path.to_s]
+      end
+    end
+
+    erb :searchresult
   end
 
 end

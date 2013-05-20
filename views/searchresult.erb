@@ -1,11 +1,13 @@
 <h1>Results</h1>
 
+<p>Searched the <%= @mlname %> mailinglist for <em>“<%= @query %>”</em>.</p>
+
 <% if @results.empty? %>
   <p>Nothing found.</p>
 <% else %>
   <ul>
-    <% @results.each do |target, mail| %>
-      <li><a href="<%= target %>"><%= mail.subject %> (<%= mail.sender %>)</a></li>
+    <% @results.each do |target, desc| %>
+      <li><a href="<%= target %>"><%= desc %></a></li>
     <% end %>
   </ul>
 <% end %>
