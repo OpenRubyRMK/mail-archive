@@ -7,7 +7,7 @@ class MlArchive < Sinatra::Base
   helpers Sinatra::ContentFor
 
   # Check interval for new mails in the mail cache
-  CHECK_INTERVAL = 60 * 120 # 2h
+  CHECK_INTERVAL = 60 * 30 # 0,5h
 
   # Basic settings
   set :root, File.expand_path(File.join(File.dirname(__FILE__), ".."))
