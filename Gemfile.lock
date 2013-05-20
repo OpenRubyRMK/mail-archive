@@ -4,6 +4,7 @@ GEM
     backports (3.3.0)
     daemons (1.1.9)
     eventmachine (1.0.3)
+    ffi (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -14,6 +15,8 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rb-inotify (0.9.0)
+      ffi (>= 0.5.0)
     sinatra (1.4.2)
       rack (~> 1.5, >= 1.5.2)
       rack-protection (~> 1.4)
@@ -39,6 +42,7 @@ PLATFORMS
 
 DEPENDENCIES
   mail
+  rb-inotify
   sinatra
   sinatra-contrib
   thin
