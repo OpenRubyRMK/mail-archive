@@ -1,0 +1,11 @@
+<h1>Results</h1>
+
+<% if @results.empty? %>
+  <p>Nothing found.</p>
+<% else %>
+  <ul>
+    <% @results.each do |target, mail| %>
+      <li><a href="<%= target %>"><%= mail.subject %> (<%= mail.sender %>)</a></li>
+    <% end %>
+  </ul>
+<% end %>

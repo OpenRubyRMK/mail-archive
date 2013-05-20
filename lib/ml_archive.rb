@@ -3,12 +3,15 @@ require_relative "mlmmj-rbarchive/archiver"
 
 class MlArchive < Sinatra::Base
 
-  # Check interval for new mails in the archive
+  # Check interval for new mails in the mail cache
   CHECK_INTERVAL = 60 * 120 # 2h
 
+  # Basic settings
   set :root, File.expand_path(File.join(File.dirname(__FILE__), ".."))
   set :ml_archive_dir, File.join(settings.public_folder, "lists")
+  set :ml_cache_dir, File.join(settings.root, "mail-cache")
 
+  # Configure development mode
   configure :development do
     enable :static
     enable :logging
@@ -16,6 +19,7 @@ class MlArchive < Sinatra::Base
     set :ml_root, "#{settings.root}/test-mls"
   end
 
+  # Configure production mode
   configure :production do
     set :ml_root, "/var/spool/mlmmj"
   end
@@ -23,7 +27,8 @@ class MlArchive < Sinatra::Base
   ########################################
   # Archive
 
-  set :ml_archiver, Archiver.new(settings.ml_archive_dir,
+  set :ml_archiver, Archiver.new(settings.ml_cache_dir,
+                                 settings.ml_archive_dir,
                                  header: "<p>OpenRubyRMK Mailing list archives</p>",
                                  searchtarget: "../../search",
                                  stylefile: "../../../archive.css",
@@ -38,12 +43,21 @@ class MlArchive < Sinatra::Base
     settings.ml_archiver << mldir
   end
 
+  # Preprocess all existing mails, then watch for new ones
+  settings.ml_archiver.preprocess_mlmmj_mails!
+  settings.ml_archiver.watch_mlmmj_mails!
+
+  # Every now and then, take all the new mails and convert
+  # them to HTML.
   Thread.new do
     loop do
       settings.ml_archiver.archive!
       sleep CHECK_INTERVAL
     end
   end
+
+  ########################################
+  # Routes
 
   get "/" do
     erb :startpage
@@ -68,11 +82,15 @@ class MlArchive < Sinatra::Base
   end
 
   get "/lists/:ml/search" do
-    "This is the search for the #{params[:ml]} mailinglist."
+    @mlname = params[:ml]
+    erb :search
   end
 
   get "/lists/:ml/search/" do
     redirect "/lists/#{params[:ml]}/search"
+  end
+
+  post "/lists/:ml/search" do
   end
 
 end
