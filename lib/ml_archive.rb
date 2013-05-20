@@ -64,14 +64,11 @@ class MlArchive < Sinatra::Base
     settings.ml_archiver << mldir
   end
 
-  # Preprocess all existing mails, then watch for new ones
-  settings.ml_archiver.preprocess_mlmmj_mails!
-  settings.ml_archiver.watch_mlmmj_mails!
-
   # Every now and then, take all the new mails and convert
   # them to HTML.
   Thread.new do
     loop do
+      settings.ml_archiver.preprocess_mlmmj_mails!
       settings.ml_archiver.archive!
       sleep CHECK_INTERVAL
     end
