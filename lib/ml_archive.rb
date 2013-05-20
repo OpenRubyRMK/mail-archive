@@ -1,7 +1,9 @@
 require "sinatra"
+require "sinatra/content_for"
 require_relative "mlmmj-rbarchive/archiver"
 
 class MlArchive < Sinatra::Base
+  helpers Sinatra::ContentFor
 
   # Check interval for new mails in the mail cache
   CHECK_INTERVAL = 60 * 120 # 2h

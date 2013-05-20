@@ -6,8 +6,21 @@
     <link rel="stylesheet" href="/lists/archive.css" type="text/css" />
   </head>
   <body>
-    <div id="main">
-      <%= yield %>
+
+    <div id="banner">
+      <div id="header">
+        <p>OpenRubyRMK Mailing list archives</p>
+      </div>
+      <div id="topnav">
+        <a href="/">Home</a>
+        <%= yield_content :topnav %>
+      </div>
+    </div>
+
+    <div id="mailinglists">
+      <div id="main">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

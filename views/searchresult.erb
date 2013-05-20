@@ -1,6 +1,13 @@
+<% content_for :topnav do %>
+  |
+  <a href=".">Month and Year Index</a>
+  |
+  <a href="search">Search</a>
+<% end %>
+
 <h1>Results</h1>
 
-<p>Searched the <%= @mlname %> mailinglist for <em>“<%= @query %>”</em>.</p>
+<p>Searched the <em><%= @mlname %></em> mailinglist for <em>“<%= @query %>”</em>.</p>
 
 <% if @results.empty? %>
   <p>Nothing found.</p>

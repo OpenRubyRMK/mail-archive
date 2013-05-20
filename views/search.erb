@@ -1,7 +1,14 @@
+<% content_for :topnav do %>
+  |
+  <a href=".">Month and Year Index</a>
+  |
+  <a href="search">Search</a>
+<% end %>
+
 <h1>Search</h1>
 
 <form method="post" action="/lists/<%= @mlname %>/search">
-  <p>Search the <%= @mlname %> mailinglist:</p>
+  <p>Search the <em><%= @mlname %></em> mailinglist:</p>
   <p><input type="text" name="query"/></p>
   <p><input type="submit"/></p>
 </form>
