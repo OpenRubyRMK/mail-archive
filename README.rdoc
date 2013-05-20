@@ -19,7 +19,7 @@ mailinglists.
 Browse to http://localhost:3000 and enjoy. You’ll notice that by
 default, the website processes the <tt>test-mls</tt> directory inside the
 project root. Therefore you can just put your test mails there if you
-aren’t content with the mails already there. Note that in `production`
+aren’t content with the mails already there. Note that in +production+
 environment, it will instead process <tt>/var/spool/mlmmj</tt>.
 
 == License
