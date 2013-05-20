@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "sinatra"
 require "sinatra/content_for"
 require_relative "mlmmj-rbarchive/archiver"
@@ -34,7 +35,7 @@ class MlArchive < Sinatra::Base
                                  header: "<p>OpenRubyRMK Mailing list archives</p>",
                                  searchtarget: "../../search",
                                  stylefile: "../../../archive.css",
-                                 archiveadmin: "quintus@quintilianus.eu")
+                                 archiveadmin: "quintus [ät] quintilianus [döt] eu")
 
   configure :development do
     Thread.abort_on_exception = true
