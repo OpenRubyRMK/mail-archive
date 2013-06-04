@@ -53,7 +53,8 @@ class MlArchive < Sinatra::Base
                                  header: "<p>OpenRubyRMK Mailing list archives</p>",
                                  searchtarget: "../../search",
                                  stylefile: "../../../archive.css",
-                                 archiveadmin: "quintus [ät] quintilianus [döt] eu")
+                                 archiveadmin: "quintus [ät] quintilianus [döt] eu",
+                                 mhonarc: "/usr/local/bin/mhonarc")
 
   configure :development do
     Thread.abort_on_exception = true
