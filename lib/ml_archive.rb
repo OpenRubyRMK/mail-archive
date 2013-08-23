@@ -54,7 +54,7 @@ class MlArchive < Sinatra::Base
                                  searchtarget: "../../search",
                                  stylefile: "../../../archive.css",
                                  archiveadmin: "quintus [ät] quintilianus [döt] eu",
-                                 mhonarc: "/usr/local/bin/mhonarc")
+                                 mhonarc: "/usr/bin/mhonarc")
 
   configure :development do
     Thread.abort_on_exception = true
