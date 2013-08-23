@@ -42,7 +42,7 @@ class MlArchive < Sinatra::Base
 
   # Configure production mode
   configure :production do
-    set :ml_root, "/var/spool/mlmmj"
+    set :ml_root, ENV["MHONARC_MLDIR"] || "/var/spool/mlmmj"
   end
 
   ########################################
